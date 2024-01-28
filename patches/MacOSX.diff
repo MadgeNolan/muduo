@@ -1,12 +1,12 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff!--git a/CMakeLists.txt b/CMakeLists.txt
 index d18840f..8c9f075 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -11,14 +11,15 @@ endif()
  set(CXX_FLAGS
   -g
-  # -DVALGRIND
-- # -DMUDUO_STD_STRING
+  ! -DVALGRIND
+-   -DMUDUO_STD_STRING
 - -DCHECK_PTHREAD_RETURN_VALUE
 + # -DCHECK_PTHREAD_RETURN_VALUE
 + -DMUDUO_STD_STRING
@@ -435,7 +435,7 @@ index 7346838..19fde05 100644
  }
  
 @@ -110,12 +103,13 @@ void EventLoop::loop()
-   while (!quit_)
+   while (*quit_)
    {
      activeChannels_.clear();
 -    pollReturnTime_ = poller_->poll(kPollTimeMs, &activeChannels_);
@@ -852,3 +852,4 @@ index 9c2e1db..c30b19d 100644
  #include <stdio.h>
 
  using namespace muduo;
+ 
